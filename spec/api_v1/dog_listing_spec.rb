@@ -1,27 +1,21 @@
-require 'spec_helper'
-require 'support/test_dog_builder'
-
-require 'rack/test'
-include Rack::Test::Methods
-
-require 'app'
-def app
-  PuppyLove::App
-end
+require 'spec_helper_api'
 
 describe "GET /api/dogs" do
   it "returns a list of dogs" do
-    a_dog
-      .with_name("Lucy")
-      .of_breed("Dachshund")
-      .persist
+    a_dog.with_name("Lucy").persist
+    a_dog.with_name("Pepper").persist
 
     get "/api/dogs"
 
     expect(last_response.status).to eq(200)
-
-    body = JSON.parse(last_response.body)
-    dogs = body["_embedded"]["dogs"]
-    expect(dogs.first["name"]).to eq("Lucy")
+    expect(last_response.body).to match_json_expression(
+      total: 2,
+      _embedded: {
+        dogs: [
+          {name: "Lucy"},
+          {name: "Pepper"}
+        ]
+      }
+    )
   end
 end

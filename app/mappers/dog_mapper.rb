@@ -1,3 +1,6 @@
+require 'models/dog'
+
+# Maps Dog models to and from a database.
 class DogMapper
   def initialize(database)
     @database = database
@@ -17,6 +20,11 @@ class DogMapper
   def find_by_id(id)
     row = dataset[id: id]
     Dog.new(row)
+  end
+
+  def all
+    rows = dataset.all
+    rows.map { |row| Dog.new(row) }
   end
 
   private

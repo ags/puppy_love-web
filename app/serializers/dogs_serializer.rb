@@ -2,6 +2,7 @@ require 'oat'
 require 'oat/adapters/hal'
 require 'serializers/dog_serializer'
 
+# Serializes a collection of Dog models to HAL JSON.
 class DogsSerializer < Oat::Serializer
   adapter Oat::Adapters::HAL
 

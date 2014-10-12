@@ -6,8 +6,7 @@ require 'sinatra/namespace'
 require 'sinatra/json'
 
 require 'config/db'
-
-require 'models/dog'
+require 'mappers/dog_mapper'
 require 'serializers/dogs_serializer'
 
 module PuppyLove
@@ -18,12 +17,9 @@ module PuppyLove
 
     namespace "/api" do
       get "/dogs" do
-        pets = [
-          Dog.new(id: 1, name: "Lucy", breed: "Dachshund"),
-          Dog.new(id: 2, name: "Pepper", breed: "Schnauzer"),
-        ]
+        dogs = DogMapper.new(PuppyLove::App.database).all
 
-        json DogsSerializer.new(pets).to_hash
+        json DogsSerializer.new(dogs).to_hash
       end
 
       get "/dogs/:id" do

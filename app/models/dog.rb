@@ -1,5 +1,6 @@
 require 'virtus'
 
+# Models the attributes of a dog.
 class Dog
   include Virtus.model
 
