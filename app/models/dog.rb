@@ -1,6 +1,6 @@
 require 'virtus'
 
-class Pet
+class Dog
   include Virtus.model
 
   attribute :id,    Integer

@@ -18,3 +18,8 @@ group :development do
   # BDD testing framework.
   gem 'rspec'
 end
+
+group :test do
+  # Cleans up database state.
+  gem 'database_cleaner', '~> 1.3.0'
+end

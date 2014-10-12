@@ -1,11 +1,11 @@
 require 'oat'
 require 'oat/adapters/hal'
 
-class PetSerializer < Oat::Serializer
+class DogSerializer < Oat::Serializer
   adapter Oat::Adapters::HAL
 
   schema do
-    link :self, href: "/api/pets/#{item.id}"
+    link :self, href: "/api/dogs/#{item.id}"
 
     properties do |props|
       props.name item.name
