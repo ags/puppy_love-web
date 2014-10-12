@@ -15,6 +15,8 @@ module PuppyLove
 
     set :database, DB
 
+    set :json_content_type, "application/hal+json"
+
     namespace "/api" do
       get "/dogs" do
         dogs = DogMapper.new(PuppyLove::App.database).all
