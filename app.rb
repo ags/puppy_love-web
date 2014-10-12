@@ -4,6 +4,8 @@ require 'sinatra/base'
 require 'sinatra/namespace'
 require 'sinatra/json'
 
+require 'config/db'
+
 require 'models/pet'
 require 'serializers/pets_serializer'
 
