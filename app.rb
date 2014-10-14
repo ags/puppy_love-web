@@ -6,20 +6,19 @@ require 'sinatra/namespace'
 require 'sinatra/json'
 
 require 'config/db'
-require 'mappers/dog_mapper'
+require 'config/registry'
+
 require 'serializers/dogs_serializer'
 
 module PuppyLove
   class App < Sinatra::Base
     register Sinatra::Namespace
 
-    set :database, DB
-
     set :json_content_type, "application/hal+json"
 
     namespace "/api" do
       get "/dogs" do
-        dogs = DogMapper.new(PuppyLove::App.database).all
+        dogs = PuppyLove.dog_mapper.all
 
         json DogsSerializer.new(dogs).to_hash
       end
