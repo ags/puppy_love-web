@@ -6,6 +6,9 @@ gem 'oat'
 # Screen scraper for petrescue.com.au.
 gem 'pet_rescue-scraper'
 
+# Interface to PostgreSQL.
+gem 'pg'
+
 # SQL database access toolkit.
 gem 'sequel'
 
