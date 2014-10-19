@@ -5,7 +5,15 @@ class TestDogBuilder
   def initialize(attributes={})
     @dog = Dog.new({
       name: "Tessa",
-      breed: "Jack Rusell"
+      breed: "Jack Rusell",
+      size: "Small",
+      gender: "Female",
+      age: "5 years 6 months",
+      location: "Geelong",
+      vaccinated: true,
+      desexed: true,
+      rescued: false,
+      photo_url: "http://example.com/tessa.png",
     }.merge(attributes))
 
     @mapper = DogMapper.new(DB)

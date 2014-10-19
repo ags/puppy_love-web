@@ -11,6 +11,14 @@ class DogMapper
 
     dog.id = dataset.insert(name: dog.name,
                             breed: dog.breed,
+                            age: dog.age,
+                            size: dog.size,
+                            gender: dog.gender,
+                            location: dog.location,
+                            vaccinated: dog.vaccinated?,
+                            desexed: dog.desexed?,
+                            rescued: dog.rescued?,
+                            photo_url: dog.photo_url,
                             created_at: now,
                             updated_at: now)
 

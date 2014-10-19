@@ -24,7 +24,14 @@ class DogListingsScraper
 
     def dog
       Dog.new(name: pet.name,
-              breed: pet.breed)
+              breed: pet.breed,
+              size: pet.size,
+              gender: pet.gender,
+              age: pet.age,
+              location: pet.location,
+              vaccinated: pet.vaccinated,
+              desexed: pet.desexed,
+              rescued: pet.rescued)
     end
 
     private
