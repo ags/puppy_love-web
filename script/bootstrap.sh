@@ -7,5 +7,5 @@ bundle
 
 # DB Setup
 createuser puppy_love
-createdb --owner=puppy_love puppy_love_development
+createdb --owner=puppy_love puppy_love
 createdb --owner=puppy_love puppy_love_test
