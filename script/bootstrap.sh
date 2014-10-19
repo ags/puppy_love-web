@@ -6,6 +6,6 @@ set -x
 bundle install
 
 # DB Setup
-createuser puppy_love
+createuser -S puppy_love
 createdb --owner=puppy_love puppy_love
 createdb --owner=puppy_love puppy_love_test
