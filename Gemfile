@@ -21,8 +21,11 @@ gem 'sidekiq'
 # DSL for web applications.
 gem 'sinatra'
 
-# Common extensions.
+# Common Sinatra extensions.
 gem 'sinatra-contrib'
+
+# Forking Rack HTTP server.
+gem 'unicorn'
 
 # API for defining attributes on a model.
 gem 'virtus'
