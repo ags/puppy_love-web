@@ -12,6 +12,9 @@ gem 'pet_rescue-scraper'
 # Interface to PostgreSQL.
 gem 'pg'
 
+# Make-like tool for Ruby.
+gem 'rake'
+
 # SQL database access toolkit.
 gem 'sequel'
 
