@@ -3,15 +3,13 @@ namespace :db do
   task :migrate => :app do
     require 'sequel/extensions/migration'
 
-    Sequel::Migrator.apply(PuppyLove::App.database, 'db/migrations')
+    Sequel::Migrator.apply(DB, 'db/migrations')
   end
 
   desc 'Drop the database'
   task :drop => :app do
-    database = PuppyLove::App.database
-
-    database.tables.each do |table|
-      database.run("DROP TABLE #{table} CASCADE")
+    DB.tables.each do |table|
+      DB.run("DROP TABLE #{table} CASCADE")
     end
   end
 end

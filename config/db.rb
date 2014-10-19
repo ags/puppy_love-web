@@ -1,10 +1,8 @@
 require 'sequel'
+require 'logger'
 
 Sequel.default_timezone = :utc
 
-environment = ENV.fetch('RACK_ENV')
+DB ||= Sequel.connect(ENV.fetch("DATABASE_URL"))
 
-DB ||= Sequel.connect(
-  ENV["DATABASE_URL"] ||
-    "postgres://localhost:5432/puppy_love_#{environment}"
-)
+DB.loggers << Logger.new(STDOUT)

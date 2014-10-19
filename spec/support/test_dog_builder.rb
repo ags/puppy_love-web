@@ -7,6 +7,7 @@ class TestDogBuilder
       name: "Tessa",
       breed: "Jack Rusell"
     }.merge(attributes))
+
     @mapper = DogMapper.new(DB)
   end
 

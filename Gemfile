@@ -1,5 +1,8 @@
 source 'https://rubygems.org'
 
+# Shim to load environment variables.
+gem 'dotenv'
+
 # Adapters-based API serializers with Hypermedia support.
 gem 'oat'
 

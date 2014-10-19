@@ -8,7 +8,8 @@ describe ImportDogListingJob do
     listing = instance_double("DogListingsScraper::Listing")
     job = ImportDogListingJob.new(mapper: mapper)
 
-    allow(DogListingsScraper::Listing).to receive(:new).with(123).and_return(listing)
+    allow(DogListingsScraper::Listing).to \
+      receive(:new).with(123).and_return(listing)
 
     allow(listing).to receive(:dog).and_return(dog)
 

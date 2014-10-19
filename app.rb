@@ -5,10 +5,14 @@ require 'sinatra/base'
 require 'sinatra/namespace'
 require 'sinatra/json'
 
+require 'config/environment'
 require 'config/db'
-require 'config/registry'
 
 require 'serializers/dogs_serializer'
+
+# these are required upfront for sidekiq - change this?
+require 'jobs/import_dog_listings_job'
+require 'jobs/import_dog_listing_job'
 
 module PuppyLove
   class App < Sinatra::Base
@@ -18,7 +22,7 @@ module PuppyLove
 
     namespace "/api" do
       get "/dogs" do
-        dogs = PuppyLove.dog_mapper.all
+        dogs = DogMapper.new(DB).all
 
         json DogsSerializer.new(dogs).to_hash
       end
