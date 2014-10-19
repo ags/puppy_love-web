@@ -1,3 +1,7 @@
 require './app'
+require 'sidekiq/web'
 
-run PuppyLove::App
+run Rack::URLMap.new(
+  '/'        => PuppyLove::App,
+  '/sidekiq' => Sidekiq::Web
+)
