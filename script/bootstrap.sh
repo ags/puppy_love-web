@@ -3,7 +3,7 @@ set -e
 set -x
 
 # Gems
-bundle
+bundle install
 
 # DB Setup
 createuser puppy_love
