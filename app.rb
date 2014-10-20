@@ -7,6 +7,7 @@ require 'sinatra/json'
 
 require 'config/environment'
 require 'config/db'
+require 'config/carrierwave'
 
 require 'serializers/dogs_serializer'
 
