@@ -2,3 +2,4 @@
 .test.env
 .development.env
 .production.env
+uploads/*
