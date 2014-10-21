@@ -18,7 +18,6 @@ class DogMapper
                             vaccinated: dog.vaccinated?,
                             desexed: dog.desexed?,
                             rescued: dog.rescued?,
-                            photo_url: dog.photo_url,
                             created_at: now,
                             updated_at: now)
 

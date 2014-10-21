@@ -14,5 +14,4 @@ class Dog
   attribute :vaccinated,  Boolean
   attribute :desexed,     Boolean
   attribute :rescued,     Boolean
-  attribute :photo_url,   String
 end
