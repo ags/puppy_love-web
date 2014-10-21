@@ -55,4 +55,7 @@ group :test do
 
   # Record and playback HTTP interactions.
   gem 'vcr'
+
+  # Server that responds to the same calls as Amazon S3.
+  gem 'fakes3'
 end

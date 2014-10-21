@@ -34,6 +34,10 @@ class DogListingsScraper
               rescued: pet.rescued)
     end
 
+    def large_photo_url
+      pet.large_photo_url
+    end
+
     private
 
     def pet
