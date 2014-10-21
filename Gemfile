@@ -8,6 +8,9 @@ gem 'carrierwave-aws'
 # Shim to load environment variables.
 gem 'dotenv'
 
+# Mini replacement for RMagick.
+gem 'mini_magick'
+
 # Adapters-based API serializers with Hypermedia support.
 gem 'oat'
 
