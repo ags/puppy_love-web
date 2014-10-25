@@ -2,11 +2,12 @@ source 'https://rubygems.org'
 
 # File uploads and processing.
 gem 'carrierwave'
-# CarrierWave storage that uses AWS SDK.
-gem 'carrierwave-aws'
 
 # Shim to load environment variables.
 gem 'dotenv'
+
+# Cloud services library (AWS).
+gem 'fog'
 
 # Mini replacement for RMagick.
 gem 'mini_magick'
