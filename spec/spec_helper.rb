@@ -3,6 +3,16 @@ $LOAD_PATH << File.expand_path('../../app', __FILE__)
 
 ENV["RACK_ENV"] = "test"
 
+if ENV["COVERAGE"] == "true"
+  require 'simplecov'
+
+  SimpleCov.formatters = [
+    SimpleCov::Formatter::HTMLFormatter,
+  ]
+
+  SimpleCov.start
+end
+
 require 'config/environment'
 
 RSpec.configure do |config|

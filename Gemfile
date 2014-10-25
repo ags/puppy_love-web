@@ -54,6 +54,9 @@ group :test do
   # Declarative JSON matching.
   gem 'json_expressions'
 
+  # Code coverage analysis tool.
+  gem 'simplecov'
+
   # Stub and set expectations on HTTP requests.
   gem 'webmock'
 
