@@ -1,5 +1,4 @@
 require 'models/dog'
-require 'mappers/dog_mapper'
 
 class TestDogBuilder
   def initialize(attributes={})
@@ -13,10 +12,7 @@ class TestDogBuilder
       vaccinated: true,
       desexed: true,
       rescued: false,
-      photo_url: "http://example.com/tessa.png",
     }.merge(attributes))
-
-    @mapper = DogMapper.new(DB)
   end
 
   def with_name(name)
@@ -29,12 +25,24 @@ class TestDogBuilder
     self
   end
 
+  def with_n_photos(n)
+    require 'securerandom'
+    n.times do
+      id = SecureRandom.uuid
+      @dog.photos << DogPhoto.new(path: "/#{id}.jpg",
+                                  version_name: "v_#{id}")
+    end
+    self
+  end
+
   def build
     @dog
   end
 
   def persist
-    @mapper.insert(@dog)
+    require 'mappers/dog_mapper'
+    mapper = DogMapper.new(DB)
+    mapper.insert(@dog)
   end
 end
 

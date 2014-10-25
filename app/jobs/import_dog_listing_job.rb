@@ -1,7 +1,9 @@
 require 'sidekiq'
+require 'open-uri'
 
 require 'mappers/dog_mapper'
 require 'services/dog_listings_scraper'
+require 'services/dog_photo_importer'
 
 class ImportDogListingJob
   include Sidekiq::Worker
@@ -10,8 +12,9 @@ class ImportDogListingJob
     perform_async(listing.id)
   end
 
-  def initialize(options={})
-    @mapper = options.fetch(:mapper) { DogMapper.new(DB) }
+  def initialize
+    @mapper = DogMapper.new(DB)
+    @dog_photo_importer = DogPhotoImporter.new
   end
 
   def perform(listing_id)
@@ -19,7 +22,11 @@ class ImportDogListingJob
 
     listing = DogListingsScraper::Listing.new(listing_id)
 
-    @mapper.insert(listing.dog)
+    dog = listing.dog
+
+    dog.photos = @dog_photo_importer.import(open(listing.photo_url))
+
+    @mapper.insert(dog)
 
     logger.info "Listing ##{listing_id} imported."
   end

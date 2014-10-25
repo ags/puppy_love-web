@@ -1,20 +1,19 @@
-require 'spec_helper'
+require 'spec_helper_db'
+require 'support/vcr'
+require 'config/carrierwave'
 require 'jobs/import_dog_listing_job'
 
 describe ImportDogListingJob do
-  it "persists the Dog from the given listing" do
-    mapper = spy(:mapper)
-    dog = double(:dog)
-    listing = instance_double("DogListingsScraper::Listing")
-    job = ImportDogListingJob.new(mapper: mapper)
+  it "imports a Dog and associated photos from a listing" do
+    listing_id = 283247
+    job = ImportDogListingJob.new
 
-    allow(DogListingsScraper::Listing).to \
-      receive(:new).with(123).and_return(listing)
+    VCR.use_cassette("importing_dog_listing_283247") do
+      job.perform(listing_id)
+    end
 
-    allow(listing).to receive(:dog).and_return(dog)
-
-    job.perform(123)
-
-    expect(mapper).to have_received(:insert).with(dog)
+    dogs = DogMapper.new(DB).all
+    expect(dogs.size).to eq(1)
+    expect(dogs.first.photos.size).to eq(1)
   end
 end

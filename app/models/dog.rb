@@ -1,4 +1,5 @@
 require 'virtus'
+require 'models/dog_photo'
 
 # Models the attributes of a dog.
 class Dog
@@ -14,4 +15,5 @@ class Dog
   attribute :vaccinated,  Boolean
   attribute :desexed,     Boolean
   attribute :rescued,     Boolean
+  attribute :photos,      Array[DogPhoto]
 end
