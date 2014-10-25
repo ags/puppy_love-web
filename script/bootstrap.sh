@@ -2,13 +2,17 @@
 set -e
 set -x
 
-# Gems
+# Set up gem dependencies.
 bundle install
 
-# DB Setup
+# Create database user and databases.
 createuser -S -d puppy_love
 createdb --owner=puppy_love puppy_love
 createdb --owner=puppy_love puppy_love_test
+
+# Set up database schema.
+RAILS_ENV=development bundle exec rake db:migrate
+RAILS_ENV=test bundle exec rake db:migrate
 
 # Print warning if Foreman is not installed.
 if ! command -v foreman &>/dev/null; then
