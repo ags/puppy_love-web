@@ -54,6 +54,9 @@ group :test do
   # Declarative JSON matching.
   gem 'json_expressions'
 
+  # Stub and set expectations on HTTP requests.
+  gem 'webmock'
+
   # Record and playback HTTP interactions.
   gem 'vcr'
 end
