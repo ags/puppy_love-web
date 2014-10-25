@@ -3,6 +3,7 @@ require 'sidekiq'
 require 'services/dog_listings_scraper'
 require 'jobs/import_dog_listing_job'
 
+# Triggers an ImportDogListingJob for each scraped listing.
 class ImportDogListingsJob
   include Sidekiq::Worker
 

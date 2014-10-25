@@ -1,6 +1,7 @@
 require 'carrierwave'
 require 'securerandom'
 
+# Processes and stores a photo using the confguired storage mechanism.
 class DogPhotoUploader < CarrierWave::Uploader::Base
   include CarrierWave::MiniMagick
 

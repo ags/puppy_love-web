@@ -5,6 +5,7 @@ require 'mappers/dog_mapper'
 require 'services/dog_listings_scraper'
 require 'services/dog_photo_importer'
 
+# Scrapes a given listing and persists the details.
 class ImportDogListingJob
   include Sidekiq::Worker
 

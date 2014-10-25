@@ -1,6 +1,7 @@
 require 'pet_rescue/scraper'
 require 'models/dog'
 
+# Enumerable collection of remote Listings.
 class DogListingsScraper
   include Enumerable
 
@@ -14,6 +15,7 @@ class DogListingsScraper
     end
   end
 
+  # Represents a Listing with details of a Dog.
   class Listing
     attr_reader :id
 
