@@ -17,5 +17,6 @@ else
       region:                ENV.fetch("S3_REGION")
     }
     config.fog_directory = ENV.fetch("S3_BUCKET_NAME")
+    config.asset_host = ENV.fetch("CDN_HOST")
   end
 end
