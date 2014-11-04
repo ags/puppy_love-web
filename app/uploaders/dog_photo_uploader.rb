@@ -15,8 +15,8 @@ class DogPhotoUploader < CarrierWave::Uploader::Base
 
   process convert: "jpg"
 
-  version :thumb do
-    process resize_to_fill: [200, 200]
+  version :app do
+    process resize_to_fill: [600, 0]
   end
 
   private
