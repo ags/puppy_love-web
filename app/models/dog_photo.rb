@@ -8,4 +8,8 @@ class DogPhoto
     attribute :path,         String
     attribute :version_name, String
   end
+
+  def url
+    "#{ENV.fetch("CDN_HOST")}/#{path}"
+  end
 end

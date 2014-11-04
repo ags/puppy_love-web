@@ -20,6 +20,9 @@ class DogSerializer < Oat::Serializer
       props.vaccinated item.vaccinated
       props.desexed item.desexed
       props.rescued item.rescued
+
+      photo = item.photos.first
+      props.photo_url photo && photo.url
     end
   end
 end
