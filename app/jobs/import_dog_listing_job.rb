@@ -24,8 +24,11 @@ class ImportDogListingJob
     listing = DogListingsScraper::Listing.new(listing_id)
 
     dog = listing.dog
+    photo_url = listing.photo_url
 
-    dog.photos = @dog_photo_importer.import(open(listing.photo_url))
+    if photo_url.present?
+      dog.photos = @dog_photo_importer.import(open(photo_url))
+    end
 
     @mapper.insert(dog)
 
